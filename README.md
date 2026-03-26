@@ -5,7 +5,7 @@ Welcome to your new ADK agent project! This repository is configured with the es
 ## Getting Started
 
 1.  **Fork this repository**: Use this as a starting point for your new agent.
-2.  **Configure MCP Server**: (Recommended) Follow the [MCP Setup Guide](file:///home/fon_fon_altostrat_com/agy/agy-adk-python/.agents/workflows/setup-mcp-server.md) to connect your AI assistant to the latest ADK documentation.
+2.  **Configure MCP Server**: (Recommended) Follow the [MCP Setup Guide](.agents/workflows/setup-mcp-server.md) to connect your AI assistant to the latest ADK documentation.
 3.  **Create a Virtual Environment**:
     We strongly recommend using `uv` for environment management:
     ```bash
@@ -37,7 +37,7 @@ Welcome to your new ADK agent project! This repository is configured with the es
 
 ## Recommended Tools
 
-- **AI Coding Assistant**: Use Antigravity, Gemini CLI, or Cursor with the ADK skills for the best experience. Refer to [GEMINI.md](file:///home/fon_fon_altostrat_com/agy/agy-adk-python/GEMINI.md) for detailed AI coding guidelines.
+- **AI Coding Assistant**: Use Antigravity, Gemini CLI, or Cursor with the ADK skills for the best experience. Refer to [GEMINI.md](GEMINI.md) for detailed AI coding guidelines.
 - **MCP Server**: Connect your tool to the [ADK documentation MCP server](https://google.github.io/adk-docs/tutorials/coding-with-ai/#adk-docs-mcp-server).
 
 ## Resources
