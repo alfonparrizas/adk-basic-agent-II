@@ -1,14 +1,5 @@
 # Coding Agent Guide
 
-## Project Configuration
-
-| Parameter | Value | Description |
-|-----------|-------|-------------|
-| **Deployment Region** | `europe-west1` | Target region for all deployments |
-| **Model Location** | `global` | Location for Gemini 3 series models |
-
----
-
 ## Reference Documentation
 
 If you have ADK skills available, use those instead of fetching the URLs below.
@@ -37,11 +28,7 @@ Start with 1-2 eval cases, run `make eval`, iterate. Expect 5-10+ iterations. Se
 Run `make test`. Fix issues until all tests pass.
 
 ### Phase 5: Deploy to Dev
-**Requires explicit human approval.** Run `make deploy` only after user confirms.
-> [!IMPORTANT]
-> Always use the project's default deployment region (`europe-west1`) and model location (`global`).
-
-See the **Deployment Guide** for details.
+**Requires explicit human approval.** Run `make deploy` only after user confirms. See the **Deployment Guide** for details.
 
 ### Phase 6: Production Deployment
 Ask the user: Option A (simple single-project) or Option B (full CI/CD pipeline with `uvx agent-starter-pack setup-cicd`). See the [deployment docs](https://raw.githubusercontent.com/GoogleCloudPlatform/agent-starter-pack/refs/heads/main/docs/guide/deployment.md) for step-by-step instructions.
@@ -69,17 +56,3 @@ Ask the user: Option A (simple single-project) or Option B (full CI/CD pipeline 
 - **Run Python with `uv`**: `uv run python script.py`. Run `make install` first.
 - **Stop on repeated errors**: If the same error appears 3+ times, fix the root cause instead of retrying.
 - **Terraform conflicts** (Error 409): Use `terraform import` instead of retrying creation.
-
----
-
-## Project-Specific Troubleshooting & Gotchas
-
-- **Model Availability**: To verify which Flash models are available in the `global` location, run:
-  ```python
-  from google.genai import Client
-  client = Client(vertexai=True, project='fon-test-project', location='global')
-  print([m.name for m in client.models.list()])
-  ```
-- **Location vs. Region**: Follow the **Project Configuration** at the top of this file. Use the specified **deployment region** for infrastructure and the **model location** for model initialization.
-- **Remote Query API**: Deployed `AgentEngine` objects use `async_stream_query(...)`. **MANDATORY**: You must include the `user_id` and `message` parameters. Do **not** use `async_query(...)` as it will raise an `AttributeError`.
-- **404 Handling**: If `gemini-2.5-flash` returns a 404, verify that the project has explicit access to that specific model version in the `global` location.
