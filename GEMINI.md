@@ -22,6 +22,23 @@ Otherwise, fetch these resources as needed:
 
 ---
 
+## Quick Start for AI Assistants
+
+If you need to quickly set up a test agent in this cloned repository, follow these steps:
+
+1.  **Initialize Environment**: Create a virtual environment and install dependencies.
+    ```bash
+    uv venv && source .venv/bin/activate && uv pip install -e .
+    ```
+2.  **Bootstrap Agent**: Since this is a template, use `agent-starter-pack enhance` to scaffold a prototype agent in the current directory.
+    ```bash
+    uvx agent-starter-pack enhance . --agent adk --prototype -y
+    ```
+3.  **Run & Debug**: Start the ADK web interface and use the `chrome-devtools` skill to verify agent behavior.
+    ```bash
+    adk web .
+    ```
+
 ## Development Phases
 
 ### Phase 1: Understand Requirements
@@ -46,7 +63,21 @@ See the **Deployment Guide** for details.
 ### Phase 6: Production Deployment
 Ask the user: Option A (simple single-project) or Option B (full CI/CD pipeline with `uvx agent-starter-pack setup-cicd`). See the [deployment docs](https://raw.githubusercontent.com/GoogleCloudPlatform/agent-starter-pack/refs/heads/main/docs/guide/deployment.md) for step-by-step instructions.
 
-## Development Commands
+## Development Commands (ADK CLI)
+
+If a `Makefile` is not present, use the following `adk` commands:
+
+| Command | Purpose |
+|---------|---------|
+| `adk web .` | Start interactive web interface (playground) |
+| `adk run --local` | Run agent locally in terminal |
+| `adk eval <dir> <evalset>` | Run evaluation against evalsets |
+| `pytest` | Run unit and integration tests |
+| `ruff check .` | Check code quality |
+
+*Note: Always ensure your virtual environment is active before running these commands.*
+
+## Development Commands (Makefile)
 
 | Command | Purpose |
 |---------|---------|
